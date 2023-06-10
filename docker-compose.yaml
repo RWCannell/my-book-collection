@@ -1,0 +1,20 @@
+services:
+  postgres:
+    build:
+      context: .
+      dockerfile: my-book-collection.dockerfile
+    image: "postgres-my-book-collection"
+    container_name: ${PG_CONTAINER_NAME}
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      PGDATA: ${PGDATA}
+    volumes:
+       - db-my-book-collection:/data/postgres-my-book-collection
+    ports:
+      - "5400:5432"
+    restart: unless-stopped
+volumes:
+    db-my-book-collection:
+      external: true
