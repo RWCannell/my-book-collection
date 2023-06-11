@@ -18,8 +18,18 @@ A `docker-compose.yaml` file exists in the root folder, and so does a `my-book-c
 docker volume create postgres_books
 docker-compose up -d
 ```
-
 Using pgAdmin4, the table can be seen populated with some initial data:
 ![BOOKS table in PgAdmin4](public/assets/images/pgadmin4-books-table.png?raw=true "BOOKS Table")
+
+Please note that the `docker-compose.yaml` contains environment variables. It is recommended that the user creates a `.env` file in the root folder. Here is an example of how the `.env` file may look:
+```
+PG_CONTAINER_NAME='pg-my-book-collection'
+POSTGRES_USER='postgres'
+POSTGRES_PASSWORD='books'
+POSTGRES_DB='books'
+PGDATA='/var/lib/postgresql/data'
+POSTGRES_HOST='localhost'
+POSTGRES_PORT=5401
+```
 
 
