@@ -97,6 +97,7 @@ const updateBook = (request, response) => {
   module.exports = {
     getAllBooks,
     getBookById,
+    getBookByTitle,
     addBook,
     updateBook,
     deleteBook,
