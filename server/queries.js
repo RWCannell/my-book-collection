@@ -1,5 +1,6 @@
-const Pool = require('pg').Pool
+const Pool = require("pg").Pool
 const dotenv = require("dotenv");
+const logger = require("loglevel");
 
 dotenv.config();
 
@@ -11,37 +12,38 @@ const pool = new Pool({
   port: process.env.POSTGRES_PORT,
 });
 
-const getAllBooks = (request, response) => {
-    pool.query('SELECT * FROM books ORDER BY id ASC', (error, results) => {
+const getAllBooks = (_, response) => {
+    pool.query("SELECT * FROM books ORDER BY id ASC", (error, result) => {
       if (error) {
         throw error
       }
-      console.log(results.rows);
-      response.status(200).json(results.rows);
+      logger.info(result.rows);
+      logger.debug(result.rows);
+      response.status(200).json(result.rows);
     });
 }
 
 const getBookById = (request, response) => {
     const id = parseInt(request.params.id);
 
-    pool.query('SELECT * FROM books WHERE id = $1', [id], (error, results) => {
+    pool.query("SELECT * FROM books WHERE id = $1", [id], (error, result) => {
       if (error) {
         throw error
       }
-      console.log(results.rows);
-      response.status(200).json(results.rows)
+      logger.debug(result.rows);
+      response.status(200).json(result.rows)
     });
 }
 
 const getBookByTitle = (request, response) => {
     const title = parseInt(request.params.title);
 
-    pool.query('SELECT * FROM books WHERE title = $1', [title], (error, results) => {
+    pool.query("SELECT * FROM books WHERE title = $1", [title], (error, result) => {
       if (error) {
         throw error
       }
-      console.log(results.rows);
-      response.status(200).json(results.rows)
+      logger.debug(result.rows);
+      response.status(200).json(result.rows)
     });
 }
 
@@ -53,12 +55,12 @@ const addBook = (request, response) => {
         readingStatus
     } = request.body;
   
-    pool.query('INSERT INTO users (name, email) VALUES ($1, $2, $3, $4) RETURNING *', [title, author, originallyPublished, readingStatus], (error, results) => {
+    pool.query("INSERT INTO users (name, email) VALUES ($1, $2, $3, $4) RETURNING *", [title, author, originallyPublished, readingStatus], (error, result) => {
       if (error) {
         throw error
       }
-      console.log(results.rows[0].id);
-      response.status(201).send(`Book added with Id: ${results.rows[0].id}`);
+      logger.debug(result.rows[0].id);
+      response.status(201).send(`Book added with Id: ${result.rows[0].id}`);
     })
 }
 
@@ -72,13 +74,13 @@ const updateBook = (request, response) => {
     } = request.body;
   
     pool.query(
-      'UPDATE books SET title = $1, author = $2, originallyPublished = $3, readingStatus = $4 WHERE id = $5',
+      "UPDATE books SET title = $1, author = $2, originallyPublished = $3, readingStatus = $4 WHERE id = $5",
       [title, author, originallyPublished, readingStatus, id],
-      (error, results) => {
+      (error, result) => {
         if (error) {
           throw error
         }
-        response.status(200).send(`Book with id '${id}' has been modified`);
+        response.status(200).send(`Book with id "${id}" has been modified`);
       }
     )
   }
@@ -86,11 +88,11 @@ const updateBook = (request, response) => {
   const deleteBook = (request, response) => {
     const id = parseInt(request.params.id);
   
-    pool.query('DELETE FROM books WHERE id = $1', [id], (error, results) => {
+    pool.query("DELETE FROM books WHERE id = $1", [id], (error, result) => {
       if (error) {
         throw error
       }
-      response.status(200).send(`Book with id '${id}' deleted`);
+      response.status(200).send(`Book with id "${id}" deleted`);
     })
   }
 
