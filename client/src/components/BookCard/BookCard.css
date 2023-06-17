@@ -5,3 +5,8 @@
     color: #d9fad4;
     box-shadow: 2px 2px;
 }
+
+.read-more-link {
+    cursor: pointer;
+    text-decoration-style: none;
+}

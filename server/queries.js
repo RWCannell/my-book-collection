@@ -26,6 +26,7 @@ const getAllBooks = (_, response) => {
           author: row.author,
           publishedYear: row["originally_published"],
           readingStatus: row["reading_status"],
+          readMoreUrl: row["read_more_url"]
         };
       });
       response.status(200).json(data);
@@ -61,10 +62,11 @@ const addBook = (request, response) => {
         title, 
         author,
         originallyPublished,
-        readingStatus
+        readingStatus,
+        readMoreUrl
     } = request.body;
   
-    pool.query("INSERT INTO users (name, email) VALUES ($1, $2, $3, $4) RETURNING *", [title, author, originallyPublished, readingStatus], (error, result) => {
+    pool.query("INSERT INTO users (name, email) VALUES ($1, $2, $3, $4, $5) RETURNING *", [title, author, originallyPublished, readingStatus, readMoreUrl], (error, result) => {
       if (error) {
         throw error
       }
@@ -79,12 +81,13 @@ const updateBook = (request, response) => {
         title, 
         author,
         originallyPublished,
-        readingStatus
+        readingStatus,
+        readMoreUrl
     } = request.body;
   
     pool.query(
-      "UPDATE books SET title = $1, author = $2, originallyPublished = $3, readingStatus = $4 WHERE id = $5",
-      [title, author, originallyPublished, readingStatus, id],
+      "UPDATE books SET title = $1, author = $2, originallyPublished = $3, readingStatus = $4, readMoreUrl = $5 WHERE id = $6",
+      [title, author, originallyPublished, readingStatus, readMoreUrl, id],
       (error, result) => {
         if (error) {
           throw error

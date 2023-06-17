@@ -2,7 +2,7 @@ const dotenv = require("dotenv");
 const express = require("express");
 const logger = require("loglevel");
 const db = require("./queries");
-// const cors = require("cors");
+const cors = require("cors");
 
 // Get environment variables specified in the .env file
 dotenv.config();
@@ -10,7 +10,7 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3001;
 
-// app.use(cors());
+app.use(cors());
 
 // Setup backend routes
 const router = express.Router();

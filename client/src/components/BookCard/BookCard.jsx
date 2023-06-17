@@ -6,9 +6,10 @@ import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
 import PropTypes from "prop-types";
+import Link from '@mui/material/Link';
 
 export const BookCard = (props) => {
-    const { bookTitle, author } = props;
+    const { bookTitle, author, readMoreUrl } = props;
     return (
         <>
             <Box className="book-card">
@@ -22,7 +23,7 @@ export const BookCard = (props) => {
                         </Typography>
                     </CardContent>
                     <CardActions>
-                        <Button size="small" style={{color: "#276b1d"}}>Read More</Button>
+                        <Link href={readMoreUrl} target="_blank" rel="noopener" color="#276b1d" underline="hover">Read More</Link>
                     </CardActions>
                 </Card>
             </Box>
@@ -33,4 +34,5 @@ export const BookCard = (props) => {
 BookCard.propTypes = {
     bookTitle: PropTypes.string,
     author: PropTypes.string,
+    readMoreUrl: PropTypes.string,
 };

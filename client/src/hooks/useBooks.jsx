@@ -9,7 +9,6 @@ export const useBooks = () => {
             .then((res) => res.json())
             .then((data) => {
                 const books = data;
-                console.log(JSON.stringify(books));
                 setAllBooks(books);
             })
             .catch((error) => {

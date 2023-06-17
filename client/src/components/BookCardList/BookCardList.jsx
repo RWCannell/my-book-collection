@@ -4,7 +4,7 @@ import Grid from "@mui/material/Grid";
 import PropTypes from "prop-types";
 
 
-export const BookCardRow = (props) => {
+export const BookCardList = (props) => {
     const { books } = props;
     return (
         <>
@@ -16,7 +16,7 @@ export const BookCardRow = (props) => {
                 {
                     books.map(book => 
                     <Grid item xs={3} className="book-grid" key={book.id} justifyContent="flex-start" alignItems="stretch">
-                        <BookCard bookTitle={book.title} author={book.author}/>
+                        <BookCard bookTitle={book.title} author={book.author} readMoreUrl={book.readMoreUrl}/>
                     </Grid>
                 )}
             </Grid>
@@ -24,6 +24,6 @@ export const BookCardRow = (props) => {
     );
 }
 
-BookCardRow.propTypes = {
+BookCardList.propTypes = {
     books: PropTypes.array,
 };

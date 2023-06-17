@@ -8,9 +8,8 @@ import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import "./BookTabs.css";
 import { BookSearchBar } from "../BookSearchBar/BookSearchBar";
-import { BookCard } from "../BookCard/BookCard";
 import { useBooks } from "../../hooks/useBooks";
-import { BookCardRow } from "../BookCardRow/BookCardRow";
+import { BookCardList } from "../BookCardList/BookCardList";
 
 const TabPanel = (props) => {
     const { children, value, index, ...other } = props;
@@ -72,8 +71,6 @@ export const BookTabs = () => {
         setBooksNotStarted(notStartedBooks);
     }, [allBooks.length]);
 
-    console.log(allBooks);
-
     const handleChange = (_, newValue) => {
         setValue(newValue);
     };
@@ -109,27 +106,27 @@ export const BookTabs = () => {
             </Box>
             <TabPanel value={value} index={0}>
                 <Box className="book-card-container">
-                    <BookCardRow books={allBooks} />
+                    <BookCardList books={allBooks} />
                 </Box>
             </TabPanel>
             <TabPanel value={value} index={1}>
                 <Box className="book-card-container">
-                    <BookCardRow books={booksDone} />
+                    <BookCardList books={booksDone} />
                 </Box>
             </TabPanel>
             <TabPanel value={value} index={2}>
                 <Box className="book-card-container">
-                    <BookCardRow books={booksInProgress} />
+                    <BookCardList books={booksInProgress} />
                 </Box>
             </TabPanel>
             <TabPanel value={value} index={3}>
                 <Box className="book-card-container">
-                    <BookCardRow books={booksPaused} />
+                    <BookCardList books={booksPaused} />
                 </Box>
             </TabPanel>
             <TabPanel value={value} index={4}>
                 <Box className="book-card-container">
-                    <BookCardRow books={booksNotStarted} />
+                    <BookCardList books={booksNotStarted} />
                 </Box>
             </TabPanel>
         </>
