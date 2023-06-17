@@ -10,6 +10,7 @@ import "./BookTabs.css";
 import { BookSearchBar } from "../BookSearchBar/BookSearchBar";
 import { useBooks } from "../../hooks/useBooks";
 import { BookCardList } from "../BookCardList/BookCardList";
+import { AddBookDialog } from "../AddBookDialog/AddBookDialog";
 
 const TabPanel = (props) => {
     const { children, value, index, ...other } = props;
@@ -51,6 +52,7 @@ const addBookButtonStyle = {
 
 export const BookTabs = () => {
     const [value, setValue] = React.useState(0);
+    const [open, setOpen] = React.useState(false);
     const { loadingBooks, allBooks } = useBooks();
     const [booksDone, setBooksDone] = React.useState([]);
     const [booksInProgress, setBooksInProgress] = React.useState([]);
@@ -75,6 +77,14 @@ export const BookTabs = () => {
         setValue(newValue);
     };
 
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClickClose = () => {
+        setOpen(false);
+    };
+
     return (
         <>
             <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
@@ -96,8 +106,8 @@ export const BookTabs = () => {
             </Box>
             <Box className="button-container">
                 <Grid container spacing={2} justifyContent="space-between" alignItems="center" direction="row">
-                    <Grid item xs={9} >
-                        <Button variant="contained" style={addBookButtonStyle}>Add Book</Button>
+                    <Grid item xs={9}>
+                        <Button variant="contained" style={addBookButtonStyle} onClick={handleClickOpen}>Add Book</Button>
                     </Grid>
                     <Grid item xs={3}>
                         <BookSearchBar />
@@ -129,6 +139,7 @@ export const BookTabs = () => {
                     <BookCardList books={booksNotStarted} />
                 </Box>
             </TabPanel>
+            <AddBookDialog open={open} handleClickClose={handleClickClose}/>
         </>
     );
 };
