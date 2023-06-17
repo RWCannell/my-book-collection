@@ -18,7 +18,7 @@ export const BookSearchBar = () => {
             type="search"
           />
           <IconButton type="submit" aria-label="search" className="button-search-book">
-            <SearchIcon style={{ fill: "#d9fad4" }} />
+            <SearchIcon style={{ fill: "#000000" }} />
           </IconButton>
         </form>
     );

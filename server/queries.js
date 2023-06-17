@@ -19,7 +19,16 @@ const getAllBooks = (_, response) => {
       }
       logger.info(result.rows);
       logger.debug(result.rows);
-      response.status(200).json(result.rows);
+      const data = result.rows.map(row => {
+        return {
+          id: row.id,
+          title: row.title,
+          author: row.author,
+          publishedYear: row["originally_published"],
+          readingStatus: row["reading_status"],
+        };
+      });
+      response.status(200).json(data);
     });
 }
 

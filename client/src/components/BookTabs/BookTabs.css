@@ -8,10 +8,15 @@
     color: #000000;
 }
 
-.tab-panel {
-    color: #000000;
+.book-grid {
+    padding-right: 16px;
+    padding-bottom: 16px;
+}
 
-    &.css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected { 
-        color: #d9fad4 !important; 
-    }
+.book-card-container {
+    overflow-y: auto;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    max-height: 40rem;
 }
