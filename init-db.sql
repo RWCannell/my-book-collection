@@ -50,9 +50,9 @@ VALUES
     (27, 'The Brothers Karamazov', 'Fyodor Dostoevsky', 1880, 'DONE', 'https://en.wikipedia.org/wiki/The_Brothers_Karamazov'),
     (28, 'Crime and Punishment', 'Fyodor Dostoevsky', 1866, 'DONE', 'https://en.wikipedia.org/wiki/Crime_and_Punishment'),
     (29, 'The Idiot', 'Fyodor Dostoevsky', 1869, 'NOT_STARTED', 'https://en.wikipedia.org/wiki/The_Idiot'),
-    (30, 'The Lord of the Rings and The Fellowship of the Ring', 'J. R. R. Tolkien', 1869, 'DONE', 'https://en.wikipedia.org/wiki/The_Fellowship_of_the_Ring'),
-    (31, 'The Lord of the Rings and The Two Towers', 'J. R. R. Tolkien', 1869, 'DONE', 'https://en.wikipedia.org/wiki/The_Two_Towers'),
-    (32, 'The Lord of the Rings and The Return of the King', 'J. R. R. Tolkien', 1869, 'DONE', 'https://en.wikipedia.org/wiki/The_Return_of_the_King'),
+    (30, 'The Lord of the Rings and The Fellowship of the Ring', 'J. R. R. Tolkien', 1954, 'DONE', 'https://en.wikipedia.org/wiki/The_Fellowship_of_the_Ring'),
+    (31, 'The Lord of the Rings and The Two Towers', 'J. R. R. Tolkien', 1954, 'DONE', 'https://en.wikipedia.org/wiki/The_Two_Towers'),
+    (32, 'The Lord of the Rings and The Return of the King', 'J. R. R. Tolkien', 1955, 'DONE', 'https://en.wikipedia.org/wiki/The_Return_of_the_King'),
     (33, 'Zen and The Art of Motorcycle Maintenance', 'Robert M. Pirsig', 1974, 'PAUSED', 'https://en.wikipedia.org/wiki/Zen_and_the_Art_of_Motorcycle_Maintenance'),
     (34, 'Nineteen Eighty-Four', 'George Orwell', 1949, 'DONE', 'https://en.wikipedia.org/wiki/Nineteen_Eighty-Four'),
     (35, 'Animal Farm', 'George Orwell', 1945, 'IN_PROGRESS', 'https://en.wikipedia.org/wiki/Animal_Farm');
